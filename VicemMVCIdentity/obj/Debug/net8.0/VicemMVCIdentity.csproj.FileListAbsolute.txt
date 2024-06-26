@@ -258,9 +258,12 @@ D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\staticwebassets.pack.js
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\scopedcss\bundle\VicemMVCIdentity.styles.css
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\scopedcss\projectbundle\VicemMVCIdentity.bundle.scp.css
-D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\VicemMVCIdentity.csproj.CopyComplete
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\VicemMVCIdentity.dll
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\refint\VicemMVCIdentity.dll
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\VicemMVCIdentity.pdb
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\VicemMVCIdentity.genruntimeconfig.cache
 D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\ref\VicemMVCIdentity.dll
+D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\obj\Debug\net8.0\VicemMVC.457CEA9A.Up2Date
+D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\bin\Debug\net8.0\MailKit.dll
+D:\DUONG\hoc.net\Vicem\VicemMVCIdentity\bin\Debug\net8.0\MimeKit.dll

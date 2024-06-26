@@ -1,6 +1,10 @@
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using VicemMVCIdentity.Data;
+using VicemMVCIdentity.Models.Entities;
+using VicemMVCIdentity.Models.Process;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +14,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+
 builder.Services.AddControllersWithViews();
 
 // builder.Services.Configure<IdentityOPtion>(options =>
@@ -22,6 +29,54 @@ builder.Services.AddControllersWithViews();
 
 //     options.
 // });
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+
+    //config pass
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = false;
+
+    //config Login
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+    options.SignIn.RequireConfirmedEmail = false;
+    // config User
+    options.User.RequireUniqueEmail = true;
+    
+
+});
+
+///
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Acount/AccessDenied";
+    options.SlidingExpiration = true;
+
+
+    options.Cookie.HttpOnly= true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite=SameSiteMode.Lax;
+});
+
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(@"./keys"))
+    .SetApplicationName("YourAppName")
+    .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
+///config email
+builder.Services.AddOptions();
+var mailSetting = builder.Configuration.GetSection("MailSetting");
+builder.Services.Configure<MailSettings>(mailSetting);
+builder.Services.AddTransient<IEmailSender,SendMailService>();
+
+
 
 
 var app = builder.Build();
